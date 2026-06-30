@@ -13,15 +13,24 @@ type Expense = {
   createdAt: string;
 };
 
-const emptyForm = {
-  date: "",
-  amount: "",
-  description: "",
-  people: [] as Person[],
-};
+function getTodayDateInputValue() {
+  const today = new Date();
+  const localDate = new Date(today.getTime() - today.getTimezoneOffset() * 60_000);
+
+  return localDate.toISOString().slice(0, 10);
+}
+
+function createEmptyForm() {
+  return {
+    date: getTodayDateInputValue(),
+    amount: "",
+    description: "",
+    people: [] as Person[],
+  };
+}
 
 export default function Home() {
-  const [form, setForm] = useState(emptyForm);
+  const [form, setForm] = useState(createEmptyForm);
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [showExpenses, setShowExpenses] = useState(false);
   const [message, setMessage] = useState("");
@@ -58,7 +67,7 @@ export default function Home() {
   }, [showExpenses]);
 
   function clearForm() {
-    setForm(emptyForm);
+    setForm(createEmptyForm());
     setError("");
   }
 
@@ -112,7 +121,7 @@ export default function Home() {
         throw new Error(data.error ?? "Could not save the expense.");
       }
 
-      setForm(emptyForm);
+      setForm(createEmptyForm());
       setMessage("Expense saved.");
 
       if (showExpenses) {
