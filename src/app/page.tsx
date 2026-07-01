@@ -201,7 +201,7 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="grid gap-2 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
               {PEOPLE.map((person) => (
                 <label
                   className="flex h-10 items-center gap-2 rounded-md border border-stone-200 px-3 text-sm font-medium text-stone-800"
