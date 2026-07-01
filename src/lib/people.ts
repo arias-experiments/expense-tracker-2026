@@ -1,4 +1,15 @@
-export const PEOPLE = ["Noah", "Patrick", "Camila", "Jose A", "Fam Arias", "Vicky"] as const;
+export const PEOPLE = [
+  "Camila",
+  "Noah",
+  "Patrick",
+  "Vicky",
+  "Jose",
+  "Sandy",
+  "CR",
+  "CA",
+  "Tati",
+  "Marissa",
+] as const;
 
 export type Person = (typeof PEOPLE)[number];
 

@@ -9,7 +9,7 @@ type Expense = {
   date: string;
   amount: string;
   description: string;
-  people: Person[];
+  people: string[];
   createdAt: string;
 };
 
@@ -299,7 +299,9 @@ export default function Home() {
                         ${Number(expense.amount).toFixed(2)}
                       </td>
                       <td className="px-5 py-3 text-stone-900">{expense.description}</td>
-                      <td className="px-5 py-3 text-stone-900">{expense.people.join(", ")}</td>
+                      <td className="px-5 py-3 text-stone-900">
+                        {PEOPLE.filter((person) => expense.people.includes(person)).join(", ")}
+                      </td>
                     </tr>
                   ))
                 )}
